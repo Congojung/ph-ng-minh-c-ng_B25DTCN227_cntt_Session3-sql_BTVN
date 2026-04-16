@@ -12,24 +12,26 @@ VALUES
 (3,'Water Spinach','Food',10000),
 (4,'Filtered Fresh Milk 4','Food',28000);
 
--- Phan tich:
--- Input: bang PRODUCTS
--- Output: lay ProductName,OriginalPrice cua san pham Electronics sau khi giam gia
--- Khong dung SELECT * vi lay du du lieu, ton tai nguyen
+-- Phan tich loi:
+-- Cau UPDATE ban dau: UPDATE PRODUCTS SET OriginalPrice=OriginalPrice*0.9;
+-- Loi o day la thieu WHERE nen se giam gia tat ca san pham (ca Food)
+-- => Gay sai du lieu (bay du lieu), khong dung yeu cau chi giam Electronics
 
--- Logic:
--- 1.Loc Category='Electronics'
--- 2.Giam gia 10% => OriginalPrice=OriginalPrice*0.9
--- 3.Hien thi ket qua sau khi giam
+-- Logic dung:
+-- 1. Chi loc san pham Electronics
+-- 2. Moi giam 10%
+-- 3. Khong duoc update toan bo bang
 
+-- Kiem tra truoc khi update
 SELECT ProductName,OriginalPrice
 FROM PRODUCTS
 WHERE Category='Electronics';
 
+-- Update dung
 UPDATE PRODUCTS
 SET OriginalPrice=OriginalPrice*0.9
 WHERE Category='Electronics';
 
+-- Kiem tra lai sau khi update
 SELECT ProductName,OriginalPrice
-FROM PRODUCTS
-WHERE Category='Electronics';
+FROM PRODUCTS;
